@@ -36,7 +36,8 @@
     header.scrolled{padding:10px 0;background:rgba(247,250,247,.88);border-bottom:1px solid var(--line);backdrop-filter:blur(18px)}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:25px}
     .brand{display:flex;align-items:center;gap:10px}
-    .brand-mark{display:grid;width:43px;height:43px;place-items:center;border-radius:15px;background:linear-gradient(140deg,var(--green),var(--navy));box-shadow:0 9px 22px rgba(30,154,104,.25);color:#fff;font-family:"Plus Jakarta Sans";font-size:21px;font-weight:800}
+    .brand-mark{position:relative;display:grid;width:43px;height:43px;place-items:center;overflow:hidden;border-radius:15px;background:linear-gradient(140deg,var(--green),var(--navy));box-shadow:0 9px 22px rgba(30,154,104,.25);color:#fff;font-family:"Plus Jakarta Sans";font-size:21px;font-weight:800}
+    .brand-mark img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
     .brand b{display:block;color:var(--navy);font-family:"Plus Jakarta Sans";font-size:16px}
     .brand small{display:block;margin-top:2px;color:var(--muted);font-size:9px;font-weight:800;letter-spacing:1.7px;text-transform:uppercase}
     nav{display:flex;align-items:center;gap:25px}
@@ -44,8 +45,11 @@
     nav>a:not(.btn):after{position:absolute;right:0;bottom:-7px;left:0;height:2px;border-radius:5px;background:var(--green);content:"";transform:scaleX(0);transition:.25s}
     nav>a:not(.btn):hover:after{transform:scaleX(1)}
     nav .btn{min-height:43px;padding:0 17px;font-size:12px}
-    .menu{display:none;width:43px;height:43px;border:0;border-radius:50%;background:var(--navy)}
-    .menu i{display:block;width:18px;height:2px;margin:4px auto;background:#fff;transition:.2s}
+    .menu{position:relative;z-index:120;display:none;width:43px;height:43px;border:0;border-radius:50%;background:var(--navy)}
+    .menu i{display:block;width:18px;height:2px;margin:4px auto;background:#fff;transition:.25s}
+    .menu.open i:nth-child(1){transform:translateY(6px) rotate(45deg)}
+    .menu.open i:nth-child(2){opacity:0}
+    .menu.open i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 
     .hero{min-height:760px;padding-top:180px;overflow:hidden;background:radial-gradient(circle at 86% 13%,#cdf3dc,transparent 25%),radial-gradient(circle at 9% 80%,#e9e5ff,transparent 20%),var(--cream)}
     .hero:after{position:absolute;right:-100px;bottom:-170px;width:430px;height:430px;border:1px solid rgba(30,154,104,.14);border-radius:50%;content:"";animation:spin 22s linear infinite}
@@ -78,7 +82,7 @@
 
     .services{background:radial-gradient(circle at 90% 15%,#d5f4e1,transparent 25%),var(--cream)}
     .heading{display:flex;align-items:end;justify-content:space-between;gap:40px;margin-bottom:48px}.heading>p{max-width:390px;color:var(--muted);font-size:15px;line-height:1.75}
-    .service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.service{position:relative;min-height:275px;padding:24px;overflow:hidden;border:1px solid var(--line);border-radius:23px;background:rgba(255,255,255,.85);box-shadow:0 8px 28px rgba(8,28,44,.045);transition:.35s}.service:before{position:absolute;right:-65px;bottom:-78px;width:180px;height:180px;border-radius:50%;background:#dff7e9;content:"";transition:.4s}.service:hover{border-color:rgba(30,154,104,.35);box-shadow:0 18px 38px rgba(8,28,44,.1);transform:translateY(-8px)}.service:hover:before{transform:scale(1.35)}.service.featured{background:var(--navy);color:#fff}.service.featured:before{background:rgba(77,181,233,.18)}.service-number{position:absolute;top:20px;right:20px;color:var(--green);font-size:11px;font-weight:800}.featured .service-number{color:var(--green2)}.service .icon{position:relative;z-index:1;display:grid;width:51px;height:51px;place-items:center;border-radius:16px;background:var(--green2);font-size:24px}.featured .icon{background:rgba(255,255,255,.12)}.service h3{position:relative;z-index:1;max-width:200px;margin-top:27px;font-size:18px}.service p{position:relative;z-index:1;margin-top:11px;color:var(--muted);font-size:12px;line-height:1.6}.featured p{color:rgba(255,255,255,.7)}.book-link{position:absolute;right:21px;bottom:20px;z-index:1;color:var(--green);font-size:11px;font-weight:800}.featured .book-link{color:var(--green2)}
+    .service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.service{position:relative;min-height:275px;padding:24px;overflow:hidden;border:1px solid var(--line);border-radius:23px;background:rgba(255,255,255,.85);box-shadow:0 8px 28px rgba(8,28,44,.045);transition:.35s}.service:before{position:absolute;right:-65px;bottom:-78px;width:180px;height:180px;border-radius:50%;background:#dff7e9;content:"";transition:.4s}.service:hover{border-color:rgba(30,154,104,.35);box-shadow:0 18px 38px rgba(8,28,44,.1);transform:translateY(-8px)}.service:hover:before{transform:scale(1.35)}.service.featured{background:var(--navy);color:#fff}.service.featured:before{background:rgba(77,181,233,.18)}.service-number{position:absolute;top:20px;right:20px;color:var(--green);font-size:11px;font-weight:800}.featured .service-number{color:var(--green2)}.service-photo{position:relative;z-index:1;width:100%;height:128px;margin-bottom:16px;overflow:hidden;border-radius:14px;background:var(--green2)}.service-photo img{width:100%;height:100%;object-fit:cover}.service-photo.no-image{display:none;margin-bottom:0}.featured .service-photo{background:rgba(255,255,255,.12)}.service .icon{position:relative;z-index:1;display:grid;width:51px;height:51px;place-items:center;border-radius:16px;background:var(--green2);font-size:24px}.featured .icon{background:rgba(255,255,255,.12)}.service h3{position:relative;z-index:1;max-width:200px;margin-top:27px;font-size:18px}.service p{position:relative;z-index:1;margin-top:11px;color:var(--muted);font-size:12px;line-height:1.6}.featured p{color:rgba(255,255,255,.7)}.book-link{position:absolute;right:21px;bottom:20px;z-index:1;color:var(--green);font-size:11px;font-weight:800}.featured .book-link{color:var(--green2)}
 
     .dark{background:var(--navy);color:#fff;overflow:hidden}.dark h2{color:#fff}.dark .heading>p{color:rgba(255,255,255,.63)}.dark .eyebrow{color:var(--green2)}.dark .eyebrow:before{background:var(--green2)}
     .reasons{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.16);border-bottom:1px solid rgba(255,255,255,.16)}.reason{min-height:220px;padding:28px 22px;border-right:1px solid rgba(255,255,255,.16)}.reason:last-child{border:0}.reason>span{display:block;margin-bottom:47px;color:var(--green2);font-size:11px;font-weight:800}.reason h3{font-size:17px}.reason p{margin-top:11px;color:rgba(255,255,255,.6);font-size:12px;line-height:1.6}
@@ -105,7 +109,7 @@
   <header id="header">
     <div class="wrap nav">
       <a class="brand" href="#top" aria-label="Dipika Wellness Circle">
-        <span class="brand-mark">D</span>
+        <span class="brand-mark"><img src="assets/logo.png" alt="" loading="lazy" onerror="this.remove()">D</span>
         <span><b>Dipika</b><small>Wellness Circle</small></span>
       </a>
 
@@ -188,14 +192,14 @@
         </div>
 
         <div class="service-grid">
-          <article class="service featured reveal"><span class="service-number">01</span><span class="icon">✦</span><h3>Home Visit Yoga</h3><p>Your practice, in the comfort of your own home. The flagship choice for focused, one-to-one guidance.</p><a class="book-link" href="#contact">Book this session ↗</a></article>
-          <article class="service reveal"><span class="service-number">02</span><span class="icon">⌂</span><h3>Studio Yoga Classes</h3><p>Grounded, guided classes at our Sushant Lok studio.</p></article>
-          <article class="service reveal"><span class="service-number">03</span><span class="icon">⌁</span><h3>Back Pain Therapy</h3><p>Gentle, progressive movement to help your back feel supported.</p></article>
-          <article class="service reveal"><span class="service-number">04</span><span class="icon">◒</span><h3>Knee Pain Therapy</h3><p>Build steadiness, strength and confidence in everyday movement.</p></article>
-          <article class="service reveal"><span class="service-number">05</span><span class="icon">◌</span><h3>Cervical &amp; Spine Care</h3><p>Thoughtful mobility and alignment work for your neck and spine.</p></article>
-          <article class="service reveal"><span class="service-number">06</span><span class="icon">✧</span><h3>Personal Training</h3><p>One-on-one accountability for a stronger, more active you.</p></article>
-          <article class="service reveal"><span class="service-number">07</span><span class="icon">▦</span><h3>Corporate Yoga</h3><p>On-site or virtual sessions that help teams reset and recharge.</p></article>
-          <article class="service reveal"><span class="service-number">08</span><span class="icon">＋</span><h3>Gym-based Conditioning</h3><p>Purposeful strength and conditioning to support your whole practice.</p></article>
+          <article class="service featured reveal"><span class="service-number">01</span><div class="service-photo"><img src="assets/service-1.jpg" alt="Home Visit Yoga" loading="lazy" onerror="this.parentElement.classList.add('no-image')"></div><span class="icon">✦</span><h3>Home Visit Yoga</h3><p>Your practice, in the comfort of your own home. The flagship choice for focused, one-to-one guidance.</p><a class="book-link" href="#contact">Book this session ↗</a></article>
+          <article class="service reveal"><span class="service-number">02</span><div class="service-photo"><img src="assets/service-2.jpg" alt="Studio Yoga Classes" loading="lazy" onerror="this.parentElement.classList.add('no-image')"></div><span class="icon">⌂</span><h3>Studio Yoga Classes</h3><p>Grounded, guided classes at our Sushant Lok studio.</p></article>
+          <article class="service reveal"><span class="service-number">03</span><div class="service-photo"><img src="assets/service-3.jpg" alt="Back Pain Therapy" loading="lazy" onerror="this.parentElement.classList.add('no-image')"></div><span class="icon">⌁</span><h3>Back Pain Therapy</h3><p>Gentle, progressive movement to help your back feel supported.</p></article>
+          <article class="service reveal"><span class="service-number">04</span><div class="service-photo"><img src="assets/service-4.jpg" alt="Knee Pain Therapy" loading="lazy" onerror="this.parentElement.classList.add('no-image')"></div><span class="icon">◒</span><h3>Knee Pain Therapy</h3><p>Build steadiness, strength and confidence in everyday movement.</p></article>
+          <article class="service reveal"><span class="service-number">05</span><div class="service-photo"><img src="assets/service-5.jpg" alt="Cervical & Spine Care" loading="lazy" onerror="this.parentElement.classList.add('no-image')"></div><span class="icon">◌</span><h3>Cervical &amp; Spine Care</h3><p>Thoughtful mobility and alignment work for your neck and spine.</p></article>
+          <article class="service reveal"><span class="service-number">06</span><div class="service-photo"><img src="assets/service-6.jpg" alt="Personal Training" loading="lazy" onerror="this.parentElement.classList.add('no-image')"></div><span class="icon">✧</span><h3>Personal Training</h3><p>One-on-one accountability for a stronger, more active you.</p></article>
+          <article class="service reveal"><span class="service-number">07</span><div class="service-photo"><img src="assets/service-7.jpg" alt="Corporate Yoga" loading="lazy" onerror="this.parentElement.classList.add('no-image')"></div><span class="icon">▦</span><h3>Corporate Yoga</h3><p>On-site or virtual sessions that help teams reset and recharge.</p></article>
+          <article class="service reveal"><span class="service-number">08</span><div class="service-photo"><img src="assets/service-8.jpg" alt="Gym-based Conditioning" loading="lazy" onerror="this.parentElement.classList.add('no-image')"></div><span class="icon">＋</span><h3>Gym-based Conditioning</h3><p>Purposeful strength and conditioning to support your whole practice.</p></article>
         </div>
       </div>
     </section>
@@ -266,7 +270,7 @@
           <div class="contact-links">
             <a class="contact-link" href="https://wa.me/917017086313?text=Hello%20Dipika%2C%20I%27d%20like%20to%20know%20more%20about%20your%20sessions." target="_blank"><span class="contact-icon">◌</span><div><small>WhatsApp</small><b>Message Dipika</b></div><span>↗</span></a>
             <a class="contact-link" href="tel:+917017086313"><span class="contact-icon">⌕</span><div><small>Call</small><b>+91 70170 86313</b></div><span>↗</span></a>
-            <a class="contact-link" href="https://instagram.com/fit_dipika" target="_blank"><span class="contact-icon">◎</span><div><small>Instagram</small><b>@fit_dipika</b></div><span>↗</span></a>
+            <a class="contact-link" href="https://instagram.com/dipika_fitness_zone" target="_blank"><span class="contact-icon">◎</span><div><small>Instagram</small><b>@dipika_fitness_zone</b></div><span>↗</span></a>
           </div>
 
           <div class="address">⌖ &nbsp; Opposite Vyapar Kendra Rd, Block C,<br>&nbsp;&nbsp;&nbsp;&nbsp;Sushant Lok Phase I, Gurugram, Haryana 122009</div>
@@ -291,7 +295,7 @@
 
   <footer>
     <div class="wrap footer-top">
-      <a class="brand" href="#top"><span class="brand-mark">D</span><span><b style="color:#fff">Dipika</b><small>Wellness Circle</small></span></a>
+      <a class="brand" href="#top"><span class="brand-mark"><img src="assets/logo.png" alt="" loading="lazy" onerror="this.remove()">D</span><span><b style="color:#fff">Dipika</b><small>Wellness Circle</small></span></a>
       <p style="color:rgba(255,255,255,.55);font-size:12px">A calmer, stronger way to move through life.</p>
       <a class="top" href="#top">↑</a>
     </div>
@@ -305,8 +309,15 @@
     window.addEventListener("scroll",()=>{header.classList.toggle("scrolled",scrollY>20);progress.style.width=(scrollY/(document.documentElement.scrollHeight-innerHeight)*100)+"%"},{passive:true});
 
     const menu=document.getElementById("menu"),nav=document.getElementById("nav");
-    menu.onclick=()=>{const open=nav.classList.toggle("open");menu.setAttribute("aria-expanded",open)};
-    nav.querySelectorAll("a").forEach(a=>a.onclick=()=>{nav.classList.remove("open");menu.setAttribute("aria-expanded","false")});
+    function setMenu(open){
+      nav.classList.toggle("open",open);
+      menu.classList.toggle("open",open);
+      menu.setAttribute("aria-expanded",open);
+      menu.setAttribute("aria-label",open?"Close menu":"Open menu");
+    }
+    menu.onclick=()=>setMenu(!nav.classList.contains("open"));
+    nav.querySelectorAll("a").forEach(a=>a.onclick=()=>setMenu(false));
+    document.addEventListener("keydown",e=>{if(e.key==="Escape")setMenu(false)});
 
     document.querySelectorAll('a[href^="#"]').forEach(a=>a.onclick=e=>{const el=document.querySelector(a.getAttribute("href"));if(el){e.preventDefault();scrollTo({top:el.offsetTop-70,behavior:"smooth"})}});
 
