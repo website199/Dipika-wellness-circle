@@ -38,6 +38,7 @@
     .brand{display:flex;align-items:center;gap:10px}
     .brand-mark{position:relative;display:grid;width:43px;height:43px;place-items:center;overflow:hidden;border-radius:15px;background:linear-gradient(140deg,var(--green),var(--navy));box-shadow:0 9px 22px rgba(30,154,104,.25);color:#fff;font-family:"Plus Jakarta Sans";font-size:21px;font-weight:800}
     .brand-mark img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .brand-mark .brand-fallback{display:none}
     .brand b{display:block;color:var(--navy);font-family:"Plus Jakarta Sans";font-size:16px}
     .brand small{display:block;margin-top:2px;color:var(--muted);font-size:9px;font-weight:800;letter-spacing:1.7px;text-transform:uppercase}
     nav{display:flex;align-items:center;gap:25px}
@@ -109,7 +110,7 @@
   <header id="header">
     <div class="wrap nav">
       <a class="brand" href="#top" aria-label="Dipika Wellness Circle">
-        <span class="brand-mark"><img src="assets/logo.png" alt="" loading="lazy" onerror="this.remove()">D</span>
+        <span class="brand-mark"><img src="assets/logo.png" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="brand-fallback">D</span></span>
         <span><b>Dipika</b><small>Wellness Circle</small></span>
       </a>
 
@@ -295,7 +296,7 @@
 
   <footer>
     <div class="wrap footer-top">
-      <a class="brand" href="#top"><span class="brand-mark"><img src="assets/logo.png" alt="" loading="lazy" onerror="this.remove()">D</span><span><b style="color:#fff">Dipika</b><small>Wellness Circle</small></span></a>
+      <a class="brand" href="#top"><span class="brand-mark"><img src="assets/logo.png" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="brand-fallback">D</span></span><span><b style="color:#fff">Dipika</b><small>Wellness Circle</small></span></a>
       <p style="color:rgba(255,255,255,.55);font-size:12px">A calmer, stronger way to move through life.</p>
       <a class="top" href="#top">↑</a>
     </div>
